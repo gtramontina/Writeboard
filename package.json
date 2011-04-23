@@ -1,0 +1,25 @@
+{
+  "name"           : "Writeboard!",
+  "description"    : "Collaborative Whiteboard",
+  "version"        : "0.0.1",
+  "homepage"       : "writeboard.it",
+  "repository"     : { "type": "git", "url": "github.com/gtramontina/writeboard.it.git" },
+  "author"         : "Guilherme J. Tramontina <guilherme.tramontina@gmail.com> (about.me/gtramontina)",
+  "scripts"        : { "test": "vows test/* --spec" },
+  "engines"        : { "node": "*" },
+
+  "dependencies"   : {
+    "coffee-script": "*",
+    "express"      : "*",
+    "now"          : "*",
+    "jade"         : "*",
+    "stylus"       : "*"
+  },
+
+  "devDependencies": {
+    "vows"        : "*",
+    "should"      : "*",
+    "jake"        : "*"
+  }
+}
+

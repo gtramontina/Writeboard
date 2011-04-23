@@ -1,0 +1,15 @@
+# Build artifacts and test results
+build/published_artifacts/*
+build/test_results/*
+
+# Node.js Modules
+node_modules/
+
+# Compiled css and js (from and stylus and coffeescript)
+public/stylesheets/*.css
+public/javascripts/*.js
+
+# Node.js monitor module
+nodemon-ignore
+.monitor
+
