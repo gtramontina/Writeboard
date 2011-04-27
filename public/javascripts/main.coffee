@@ -4,6 +4,7 @@ now.ready ->
   canvas = document.getElementById 'writeboard'
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
+
   context = canvas.getContext '2d'
   canvas = $ canvas
   writeboard = createWriteboard context
