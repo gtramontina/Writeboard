@@ -19,6 +19,7 @@ module.exports = (express, stylus, nowjs) ->
     console.log 'Whiteboard listening on port 3000'
 
   everyone = nowjs.initialize app
-  everyone.now.joinRoom = (roomId)->
+  everyone.now.joinRoom = (roomId, callback)->
     (nowjs.getGroup roomId).addUser @user.clientId
+    callback()
 

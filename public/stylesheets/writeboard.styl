@@ -1,4 +1,39 @@
+bottom_left_border(radius)
+  border-bottom-left-radius radius
+  -moz-border-bottom-left-radius radius
+
 #writeboard
-  cursor crosshair
   background-image url('../images/grid.gif')
+  cursor crosshair
+  position fixed
+  top 0
+  left 0
+
+#toolbar
+  background-color rgba(0, 0, 0, 0.05)
+  position absolute
+  top 0
+  right 0
+  padding 4px
+  bottom_left_border(10px)
+  z-index 999
+
+#toolbar
+  sprite(x, y, size = 16px)
+    width size
+    height size
+    background-position x y
+    opacity 0.3
+    &:hover
+      opacity 1
+      cursor pointer
+
+  div
+    background url('../images/icons.png')
+    margin 1px
+    float left
+  .help
+    sprite(0, -32px)
+  .lock
+    sprite(0, -16px)
 
