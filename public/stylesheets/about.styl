@@ -1,0 +1,35 @@
+border-radius(radius)
+  border-radius radius
+  -moz-border-radius radius
+
+shadow(left, top, blur, color)
+  -moz-box-shadow left top blur color
+  -webkit-box-shadow left top blur color
+  box-shadow left top blur color
+
+#overlay
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background-color rgba(0, 0, 0, 0.05)
+  z-index 100
+
+#box
+  shadow(1px, 1px, 3px, rgba(0,0,0,0.3))
+  $box-width = 400px
+  $box-height = 300px
+  position absolute
+  left 50%
+  top 50%
+  width $box-width
+  height $box-height
+  margin-left -($box-width/2)
+  margin-top -($box-height/2)
+  border-radius(10px)
+  border 2px solid black
+  padding 5px
+  background-color white
+  z-index 100
+

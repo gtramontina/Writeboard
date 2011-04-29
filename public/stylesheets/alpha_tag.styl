@@ -1,25 +1,14 @@
-@font-face
-  font-family Droid Sans Mono
-  font-style normal
-  font-weight normal
-  src local(Droid Sans Mono), local(DroidSansMono), url(http://themes.googleusercontent.com/font?kit=ns-m2xQYezAtqh7ai59hJUYuTAAIFFn5GTWtryCmBQ4) format(woff)
-
 spin(degrees)
-  degrees = unit(degrees, deg)
   -webkit-transform rotate(degrees)
   -moz-transform rotate(degrees)
 
 shadow(left, top, blur, color)
-  left = unit(left, px)
-  top = unit(top, px)
-  blur = unit(blur, px)
   -moz-box-shadow left top blur color
   -webkit-box-shadow left top blur color
   box-shadow left top blur color
 
 #alpha_tag
-  z-index 999
-  font-family Droid Sans Mono
+  z-index 10
   font-size .7em
   position absolute
   top 2.5em
@@ -27,8 +16,8 @@ shadow(left, top, blur, color)
   background-color #FFAA00
   padding 1px 0
   overflow hidden
-  spin(-45)
-  shadow(1, 1, 3, rgba(0,0,0,0.3))
+  spin(-45deg)
+  shadow(1px, 1px, 3px, rgba(0,0,0,0.3))
 
 #alpha_tag span
   color #A66F00

@@ -11,7 +11,7 @@ module.exports = (express, stylus, nowjs) ->
     app.use express.compiler src: __dirname+'/public', enable: ['coffeescript']
     app.use express.static __dirname+'/public'
 
-  require('./controllers/main')(app)
+  require('./controllers/writeboard')(app)
   require('./controllers/room')(app, nowjs)
 
   if module.parent? and module.parent.id is '.'
