@@ -8,6 +8,14 @@ border-radius(radius)
   border-radius radius
   -moz-border-radius radius
 
+border-top-left-radius(radius)
+  border-top-left-radius radius
+  moz-border-radius-topleft radius
+
+border-top-right-radius(radius)
+  border-top-right-radius radius
+  -moz-border-radius-topright radius
+
 shadow(left, top, blur, color)
   -moz-box-shadow left top blur color
   -webkit-box-shadow left top blur color
@@ -22,6 +30,7 @@ shadow(left, top, blur, color)
   background-color rgba(0, 0, 0, 0.05)
   z-index 100
 
+$border-radius = 10px
 #box
   shadow(1px, 1px, 3px, rgba(0,0,0,0.3))
   $box-width = 400px
@@ -33,7 +42,7 @@ shadow(left, top, blur, color)
   height $box-height
   margin-left -($box-width/2)
   margin-top -($box-height/2)
-  border-radius(10px)
+  border-radius($border-radius)
   border 2px solid black
   padding 5px
   background-color white
@@ -44,10 +53,15 @@ h1
   text-align center
   margin-top 0
   margin-bottom 0
+  border-top-left-radius($border-radius)
+  border-top-right-radius($border-radius)
+  background yellowGreen
 
 h2
+  font-size 10px
   margin-top 0
   margin-bottom 0
+  border-bottom 1px dotted black
 
 ul
   padding-left 15px
