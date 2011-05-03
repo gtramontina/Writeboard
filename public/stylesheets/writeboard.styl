@@ -5,23 +5,23 @@ bottom_left_border(radius)
 #writeboard
   background-image url('../images/grid.gif')
   cursor crosshair
-  position fixed
+  position absolute
   top 0
   left 0
 
 #toolbar
   background-color rgba(0, 0, 0, 0.05)
-  position absolute
+  position fixed
   top 0
   right 0
   padding 4px
   bottom_left_border(10px)
   z-index 10
 
-#toolbar
-  sprite(x, y, size = 16px)
-    width size
-    height size
+  $icon-size = 16px
+  sprite(x, y)
+    width $icon-size
+    height $icon-size
     background-position x y
     opacity 0.3
     &:hover
@@ -30,6 +30,7 @@ bottom_left_border(radius)
 
   div
     background url('../images/icons.png')
+    background-repeat no-repeat
     margin 1px
     float left
   .help
@@ -38,4 +39,7 @@ bottom_left_border(radius)
     sprite(0, -16px)
   .eye
     sprite(0, -48px)
+    padding-left $icon-size
+    text-align center
+    line-height $icon-size
 
