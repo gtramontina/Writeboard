@@ -4,14 +4,9 @@ now.ready ->
 
 buildCanvas = ->
   roomId = $('room').get(0).id
-  canvas = now.resizeCanvas()
-  joinRoom roomId, canvas
-
-now.resizeCanvas = (width = window.innerWidth, height = window.innerHeight) ->
   canvas = document.getElementById 'writeboard'
-  canvas.width = width
-  canvas.height = height
-  canvas
+  [canvas.width, canvas.height] = [window.innerWidth, window.innerHeight]
+  joinRoom roomId, canvas
 
 joinRoom = (roomId, canvas) ->
   now.joinRoom

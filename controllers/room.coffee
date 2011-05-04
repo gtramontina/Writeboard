@@ -6,8 +6,6 @@ module.exports = (app, nowjs) ->
   everyone = nowjs.initialize app
   everyone.now.joinRoom = (roomInfo, callback) ->
     room = getRoom roomInfo
-    console.log require('sys').inspect room
-    handleCanvasSize room, roomInfo.canvas
     room.addUser @user.clientId
     callback()
 
@@ -21,10 +19,4 @@ module.exports = (app, nowjs) ->
     room.maxCanvasSize = width: roomInfo.canvas.width, height: roomInfo.canvas.height
     room.augumented = true
     room
-
-  handleCanvasSize = (room, newCanvasSize) ->
-    room.maxCanvasSize.width = newCanvasSize.width if newCanvasSize.width > room.maxCanvasSize.width
-    room.maxCanvasSize.height = newCanvasSize.height if newCanvasSize.height > room.maxCanvasSize.height
-
-    room.now.resizeCanvas room.maxCanvasSize.width, room.maxCanvasSize.height
 
