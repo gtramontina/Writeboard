@@ -1,24 +1,18 @@
-now.ready ->
-  buildCanvas()
-  bindButtons()
-
-buildCanvas = ->
-  roomId = $('room').get(0).id
+$ ->
   canvas = document.getElementById 'writeboard'
   [canvas.width, canvas.height] = [window.innerWidth, window.innerHeight]
-  joinRoom roomId, canvas
+  bindButtons()
 
-joinRoom = (roomId, canvas) ->
-  now.joinRoom
-    id: roomId,
-    canvas: width: canvas.width, height: canvas.height,
-    -> enableCanvas canvas
+now.ready -> joinRoom $('room').attr 'id'
 
-enableCanvas = (canvas) ->
-  context = canvas.getContext '2d'
-  writeboard = createWriteboard context
+joinRoom = (roomId) ->
+  now.joinRoom id: roomId,
+    enableCanvas
 
-  $canvas = $ canvas
+enableCanvas = ->
+  $canvas = $ '#writeboard'
+  writeboard = createWriteboard $canvas[0].getContext '2d'
+
   drawing = false
   $canvas.mouseup ->
     drawing = false
