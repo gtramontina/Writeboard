@@ -7,16 +7,22 @@ module.exports = (app, nowjs) ->
   everyone.now.joinRoom = (roomInfo, callback) ->
     room = getRoom roomInfo
     room.addUser @user.clientId
-    callback()
+    callback(room.drawings)
 
   getRoom = (roomInfo) ->
     room = nowjs.getGroup roomInfo.id
     return room if room.augumented
 
-    room.now.sendStartDrawing = (x, y) -> room.now.startDrawing x, y
-    room.now.sendDraw = (x, y) -> room.now.draw x, y
-    room.now.sendStopDrawing = -> room.now.stopDrawing()
-    #room.maxCanvasSize = width: roomInfo.canvas.width, height: roomInfo.canvas.height
+    room.drawings = []
+    room.now.sendStartDrawing = (x, y) ->
+      room.currentDrawing = [ x: x, y: y ]
+      room.now.startDrawing x, y
+    room.now.sendDraw = (x, y) ->
+      room.currentDrawing.push x: x, y: y
+      room.now.draw x, y
+    room.now.sendStopDrawing = ->
+      room.drawings.push room.currentDrawing
+      room.now.stopDrawing()
     room.augumented = true
     room
 

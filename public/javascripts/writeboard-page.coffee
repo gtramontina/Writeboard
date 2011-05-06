@@ -6,8 +6,9 @@ $ ->
 now.ready -> joinRoom $('room').attr 'id'
 
 joinRoom = (roomId) ->
-  now.joinRoom id: roomId,
-    enableCanvas
+  now.joinRoom id: roomId, (drawings) ->
+    enableCanvas()
+    replay drawings
 
 enableCanvas = ->
   $canvas = $ '#writeboard'
@@ -31,6 +32,13 @@ enableCanvas = ->
   now.startDrawing = (x, y) -> writeboard.startDrawing x, y
   now.draw = (x, y) -> writeboard.draw x, y
   now.stopDrawing = -> writeboard.stopDrawing()
+
+replay = (drawings) ->
+  for path in drawings
+    point = path.shift()
+    now.startDrawing point.x, point.y
+    now.draw point.x, point.y for point in path
+    now.stopDrawing
 
 bindButtons = ->
   $('.help').click ->

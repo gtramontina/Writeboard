@@ -1,7 +1,7 @@
 @createWriteboard = (context) ->
   context.strokeStyle = 'rgb(20, 20, 20)'
   context.lineJoin = 'round'
-  context.lineWidth = 5
+  context.lineWidth = 2
 
   draw = (x, y) ->
     context.lineTo x, y
