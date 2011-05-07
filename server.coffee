@@ -14,6 +14,5 @@ module.exports = (express, stylus, nowjs) ->
   require('./controllers/writeboard') app, nowjs
   require('./controllers/room') app, nowjs
 
-  if module.parent? and module.parent.id is '.'
-    app.listen 9796
+  app.listen 9796
 
