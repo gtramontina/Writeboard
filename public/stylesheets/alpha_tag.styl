@@ -1,29 +1,20 @@
+@import 'nib'
+
 @font-face
   font-family 'Droid Sans Mono'
   font-style normal
   font-weight normal
   src local('Droid Sans Mono'), local('DroidSansMono'), url('http://themes.googleusercontent.com/font?kit=ns-m2xQYezAtqh7ai59hJUYuTAAIFFn5GTWtryCmBQ4') format('woff')
 
-spin(degrees)
-  -webkit-transform rotate(degrees)
-  -moz-transform rotate(degrees)
-
-shadow(left, top, blur, color)
-  -moz-box-shadow left top blur color
-  -webkit-box-shadow left top blur color
-  box-shadow left top blur color
-
 #alpha_tag
   z-index 10
   font-size 10px
-  position fixed
-  top 2.5em
-  left -3.75em
+  fixed top 2.5em left -3.75em
   background-color #FFAA00
   padding 1px 0
   overflow hidden
-  spin(-45deg)
-  shadow(1px, 1px, 3px, rgba(0,0,0,0.3))
+  transform rotate(-45deg)
+  box-shadow 1px 1px 3px rgba(0, 0, 0, 0.3)
 
 #alpha_tag span
   font-family 'Droid Sans Mono'

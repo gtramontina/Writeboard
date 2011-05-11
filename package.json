@@ -13,7 +13,8 @@
     "express"      : "*",
     "now"          : "*",
     "jade"         : "*",
-    "stylus"       : "*"
+    "stylus"       : "*",
+    "nib"          : "*"
   },
 
   "devDependencies": {

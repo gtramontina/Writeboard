@@ -1,44 +1,37 @@
-bottom_left_border(radius)
-  border-bottom-left-radius radius
-  -moz-border-radius-bottomleft radius
+@import 'nib'
 
 #writeboard
   background-image url('../images/grid.gif')
+  absolute top left
   cursor crosshair
-  position absolute
-  top 0
-  left 0
 
 #toolbar
   background-color rgba(0, 0, 0, 0.05)
-  position fixed
-  top 0
-  right 0
+  border-bottom-left-radius 10px
+  fixed top right
   padding 4px
-  bottom_left_border(10px)
   z-index 10
 
   $icon-size = 16px
   sprite(x, y)
+    background-position x y
     width $icon-size
     height $icon-size
-    background-position x y
     opacity 0.3
     &:hover
       opacity 1
       cursor pointer
 
   div
-    background url('../images/icons.png')
-    background-repeat no-repeat
+    background url('../images/icons.png') no-repeat
     margin 1px
     float left
   .help
-    sprite(0, -32px)
+    sprite 0, -32px
   .lock
-    sprite(0, -16px)
+    sprite 0, -16px
   .eye
-    sprite(0, -48px)
+    sprite 0, -48px
     padding-left $icon-size
     text-align center
     line-height $icon-size
