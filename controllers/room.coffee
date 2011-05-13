@@ -4,13 +4,13 @@ module.exports = (app, nowjs) ->
     res.render 'writeboard', { title: 'Writeboard!', roomId: req.params.roomId }
 
   everyone = nowjs.initialize app
-  everyone.now.joinRoom = (roomInfo, callback) ->
-    room = getRoom roomInfo
+  everyone.now.joinRoom = (roomId, callback) ->
+    room = getRoom roomId
     room.addUser @user.clientId
     callback(room.drawings)
 
-  getRoom = (roomInfo) ->
-    room = nowjs.getGroup roomInfo.id
+  getRoom = (roomId) ->
+    room = nowjs.getGroup roomId
     return room if room.augumented
 
     room.drawings = []

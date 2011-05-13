@@ -56,9 +56,8 @@ writeboardPage = ->
 
   #API
   joinRoom: ->
-    (loading 'Joining room...').show()
+    (loading "Joining room... ").show()
     now.joinRoom (dom.room.attr 'id'), enableCanvas
-
 
 $ ->
   page = writeboardPage()
