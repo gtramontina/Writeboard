@@ -13,6 +13,9 @@ module.exports = (app, nowjs) ->
     room = nowjs.getGroup roomId
     return room if room.augumented
 
+    room.on 'connect', -> room.now.updateUserCount room.count
+    room.on 'disconnect', -> room.now.updateUserCount room.count
+
     room.drawings = []
     room.now.sendStartDrawing = (x, y) ->
       room.currentDrawing = [ x: x, y: y ]

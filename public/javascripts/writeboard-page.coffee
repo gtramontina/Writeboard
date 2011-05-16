@@ -3,6 +3,7 @@ writeboardPage = ->
     body: $ 'body'
     canvas: $ '#writeboard'
     helpButton: $ '.help'
+    eye: $ '.eye'
     loadingBox: $ 'div#loading-message'
     loadingMessage: $ 'div#loading-message span'
     room: $ 'room'
@@ -11,6 +12,10 @@ writeboardPage = ->
     dom.loadingMessage.text message
     show: -> dom.loadingBox.fadeIn()
     hide: -> dom.loadingBox.fadeOut()
+
+  now.updateUserCount = (count) ->
+    dom.eye.text count
+    dom.eye.animate(opacity: 1).animate opacity: .3
 
   (loading 'Loading. Please wait...').show()
   [dom.canvas[0].width, dom.canvas[0].height] = [window.innerWidth, window.innerHeight]
