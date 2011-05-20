@@ -18,7 +18,7 @@ writeboardPage = ->
     dom.eye.animate(opacity: 1).animate opacity: .3
 
   (loading 'Loading. Please wait...').show()
-  [dom.canvas[0].width, dom.canvas[0].height] = [window.innerWidth, window.innerHeight]
+  writeboard = createWriteboard dom.canvas[0], window.innerWidth, window.innerHeight
 
   dom.helpButton.click ->
     $.get '/about', { noLayout: true }, (aboutPage) ->
@@ -26,29 +26,28 @@ writeboardPage = ->
       about.hide()
       dom.body.append about
       about.fadeIn()
+  dom.canvas.bind 'selectstart', -> false
 
   enableCanvas = (drawings) ->
-    writeboard = createWriteboard dom.canvas[0].getContext '2d'
     replay writeboard, drawings
 
     now.startDrawing = (x, y) -> writeboard.startDrawing x, y
     now.draw = (x, y) -> writeboard.draw x, y
     now.stopDrawing = -> writeboard.stopDrawing()
 
+    context = dom.canvas[0].getContext '2d'
     drawing = false
+    lastY = 0
+    dom.canvas.mousedown (event) ->
+      return if drawing
+      drawing = true
+      now.sendStartDrawing event.pageX, event.pageY
+    dom.canvas.mousemove (event) ->
+      return if not drawing
+      now.sendDraw event.pageX, event.pageY
     dom.canvas.mouseup ->
       drawing = false
       now.sendStopDrawing()
-    dom.canvas.mousedown (event) ->
-      drawing = true
-      x = event.clientX - @offsetLeft
-      y = event.clientY - @offsetTop
-      now.sendStartDrawing x, y
-    dom.canvas.mousemove (event) ->
-      return if not drawing
-      x = event.clientX - @offsetLeft
-      y = event.clientY - @offsetTop
-      now.sendDraw x, y
 
     loading().hide()
 
