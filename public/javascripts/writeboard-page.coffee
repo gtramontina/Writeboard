@@ -20,13 +20,13 @@ writeboardPage = ->
   (loading 'Loading. Please wait...').show()
   writeboard = createWriteboard dom.canvas[0], window.innerWidth, window.innerHeight
 
+  dom.canvas.bind 'selectstart', -> false
   dom.helpButton.click ->
     $.get '/about', { noLayout: true }, (aboutPage) ->
       about = $ "#{aboutPage}"
       about.hide()
       dom.body.append about
       about.fadeIn()
-  dom.canvas.bind 'selectstart', -> false
 
   enableCanvas = (drawings) ->
     replay writeboard, drawings

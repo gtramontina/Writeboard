@@ -5,7 +5,7 @@ Check it out: http://writeboard.nodester.com
 Features
 --------
 The only, yet main, feature are the rooms.
-When you access the Writeboard via http://writeboard.nodester.com you'll be redirected to a new room with a random identifier. But, if you want your rooms to have an easy name to remember, you can go straight to http://whiteboard.nodester.com/gtramontina for example.
+When you access the Writeboard via http://writeboard.nodester.com you'll be redirected to a new room with a random identifier. But, if you want your rooms to have an easy name to remember, you can go straight to http://writeboard.nodester.com/gtramontina for example.
 
 Tips
 ----
@@ -15,7 +15,7 @@ Tips
 
 Roadmap
 -------
--   Keep drawings in the room so that new attendees can see what's been drawn so far.
+-   Keep drawings in the room so that new attendees can see what's been drawn so far. (DONE: improvement required though)
 -   Make password-protected private rooms, so you can have a safe meeting.
 -   Add 'Save as... PNG/JPEG' option, for emailing the board to the attendees.
 -   (...)

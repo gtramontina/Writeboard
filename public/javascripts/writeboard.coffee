@@ -13,6 +13,7 @@
   startDrawing = (x, y) ->
     [lastX, lastY] = [x, y]
     context.beginPath()
+    context.moveTo x, y
     lastCanvasData = context.getImageData 0, 0, width, height
     draw x+.1, y+.1
 
@@ -25,7 +26,7 @@
     context.stroke()
     [lastX, lastY] = [x, y]
 
-  stopDrawing = -> # ?
+  stopDrawing = -> lastX = lastY = 0 # ?
 
   setColor 'rgba(20, 20, 20, 0.8)'
 
