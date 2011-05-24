@@ -1,10 +1,10 @@
-@createWriteboard = (canvas, width, height) ->
-  [canvas.width, canvas.height] = [width, height]
+createWriteboard = (canvas) ->
   context = canvas.getContext '2d'
   context.lineJoin = 'round'
   context.lineCap = 'round'
   context.lineWidth = 2
 
+  [width, height] = [canvas.width, canvas.height]
   lastX = lastY = 0
   lastCanvasData = undefined
 
@@ -35,4 +35,14 @@
   startDrawing: startDrawing
   stopDrawing : stopDrawing
   setColor    : setColor
+  getData     : -> canvas.toDataURL()
+  drawData    : (data) ->
+    image = new Image()
+    image.onload = ->
+      context.drawImage image, 0, 0
+      lastCanvasData = context.getImageData 0, 0, width, height
+    image.src = data
+
+root = exports ? this
+root.createWriteboard = createWriteboard
 

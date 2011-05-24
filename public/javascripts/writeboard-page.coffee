@@ -18,7 +18,9 @@ writeboardPage = ->
     dom.eye.animate(opacity: 1).animate opacity: .3
 
   (loading 'Loading. Please wait...').show()
-  writeboard = createWriteboard dom.canvas[0], window.innerWidth, window.innerHeight
+  rawCanvas = dom.canvas[0]
+  [rawCanvas.width, rawCanvas.height] = [window.innerWidth, window.innerHeight]
+  writeboard = createWriteboard rawCanvas
 
   dom.canvas.bind 'selectstart', -> false
   dom.helpButton.click ->
@@ -29,15 +31,13 @@ writeboardPage = ->
       about.fadeIn()
 
   enableCanvas = (drawings) ->
-    replay writeboard, drawings
+    writeboard.drawData drawings
 
     now.startDrawing = (x, y) -> writeboard.startDrawing x, y
     now.draw = (x, y) -> writeboard.draw x, y
     now.stopDrawing = -> writeboard.stopDrawing()
 
-    context = dom.canvas[0].getContext '2d'
     drawing = false
-    lastY = 0
     dom.canvas.mousedown (event) ->
       return if drawing
       drawing = true
@@ -51,17 +51,13 @@ writeboardPage = ->
 
     loading().hide()
 
-  replay = (writeboard, drawings) ->
-    for path in drawings
-      point = path.shift()
-      writeboard.startDrawing point.x, point.y
-      writeboard.draw point.x, point.y for point in path
-      writeboard.stopDrawing
-
   #API
   joinRoom: ->
     (loading "Joining room... ").show()
-    now.joinRoom (dom.room.attr 'id'), enableCanvas
+    roomInfo =
+      id: dom.room.attr 'id'
+      size: width: rawCanvas.width, height: rawCanvas.height
+    now.joinRoom roomInfo, enableCanvas
 
 $ ->
   page = writeboardPage()

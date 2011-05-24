@@ -1,30 +1,33 @@
-module.exports = (app, nowjs) ->
+Canvas = require 'canvas'
+module.exports = (app, nowjs, writeboard) ->
 
   app.get '/:roomId', (req, res) ->
     res.render 'writeboard', { title: 'Writeboard!', roomId: req.params.roomId }
 
   everyone = nowjs.initialize app
-  everyone.now.joinRoom = (roomId, callback) ->
-    room = getRoom roomId
+  everyone.now.joinRoom = (roomInfo, callback) ->
+    room = getRoom roomInfo
     room.addUser @user.clientId
-    callback(room.drawings)
+    callback room.writeboard.getData()
 
-  getRoom = (roomId) ->
-    room = nowjs.getGroup roomId
+  getRoom = (roomInfo) ->
+    room = nowjs.getGroup roomInfo.id
     return room if room.augumented
 
-    room.on 'connect', -> room.now.updateUserCount room.count
-    room.on 'disconnect', -> room.now.updateUserCount room.count
+    updateUserCount = -> room.now.updateUserCount room.count
+    room.on 'connect', updateUserCount
+    room.on 'disconnect', updateUserCount
 
-    room.drawings = []
+    canvas = new Canvas roomInfo.size.width, roomInfo.size.height
+    room.writeboard = writeboard.createWriteboard canvas
     room.now.sendStartDrawing = (x, y) ->
-      room.currentDrawing = [ x: x, y: y ]
+      setTimeout (-> room.writeboard.startDrawing x, y), 1
       room.now.startDrawing x, y
     room.now.sendDraw = (x, y) ->
-      room.currentDrawing.push x: x, y: y
+      setTimeout (-> room.writeboard.draw x, y), 1
       room.now.draw x, y
     room.now.sendStopDrawing = ->
-      room.drawings.push room.currentDrawing
+      setTimeout room.writeboard.stopDrawing, 1
       room.now.stopDrawing()
     room.augumented = true
     room

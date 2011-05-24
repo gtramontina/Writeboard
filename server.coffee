@@ -17,7 +17,7 @@ module.exports = (express, stylus, nib, nowjs) ->
     app.use express.static __dirname+'/public'
 
   require('./controllers/writeboard') app, nowjs
-  require('./controllers/room') app, nowjs
+  require('./controllers/room') app, nowjs, require './public/javascripts/writeboard'
 
   app.listen 9796
 
