@@ -1,6 +1,6 @@
 module.exports = (app, nowjs) ->
 
-  app.get '/', (req, res) -> res.redirect '/'+Date.now()
+  app.get '/', (req, res) -> res.redirect "/#{Date.now()}"
 
   app.get '/about', (req, res) ->
     parameters =

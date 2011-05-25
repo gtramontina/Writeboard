@@ -1,4 +1,4 @@
-createWriteboard = (canvas) ->
+@createWriteboard = (canvas) ->
   context = canvas.getContext '2d'
   context.lineJoin = 'round'
   context.lineCap = 'round'
@@ -26,7 +26,15 @@ createWriteboard = (canvas) ->
     context.stroke()
     [lastX, lastY] = [x, y]
 
-  stopDrawing = -> lastX = lastY = 0 # ?
+  stopDrawing = -> lastX = lastY = 0
+
+  takeSnapshot = -> canvas.toDataURL()
+  splash = (snapshot) ->
+    image = new Image()
+    image.onload = ->
+      context.drawImage image, 0, 0
+      lastCanvasData = context.getImageData 0, 0, width, height
+    image.src = snapshot
 
   setColor 'rgba(20, 20, 20, 0.8)'
 
@@ -35,14 +43,6 @@ createWriteboard = (canvas) ->
   startDrawing: startDrawing
   stopDrawing : stopDrawing
   setColor    : setColor
-  getData     : -> canvas.toDataURL()
-  drawData    : (data) ->
-    image = new Image()
-    image.onload = ->
-      context.drawImage image, 0, 0
-      lastCanvasData = context.getImageData 0, 0, width, height
-    image.src = data
-
-root = exports ? this
-root.createWriteboard = createWriteboard
+  takeSnapshot: takeSnapshot
+  splash      : splash
 

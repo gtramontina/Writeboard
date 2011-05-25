@@ -13,6 +13,7 @@ writeboardPage = ->
     show: -> dom.loadingBox.fadeIn()
     hide: -> dom.loadingBox.fadeOut()
 
+  now.takeSnapshot = (callback) -> callback writeboard.takeSnapshot()
   now.updateUserCount = (count) ->
     dom.eye.text count
     dom.eye.animate(opacity: 1).animate opacity: .3
@@ -31,7 +32,7 @@ writeboardPage = ->
       about.fadeIn()
 
   enableCanvas = (drawings) ->
-    writeboard.drawData drawings
+    writeboard.splash drawings if drawings?
 
     now.startDrawing = (x, y) -> writeboard.startDrawing x, y
     now.draw = (x, y) -> writeboard.draw x, y
