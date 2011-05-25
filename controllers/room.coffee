@@ -6,12 +6,18 @@ module.exports = (app, nowjs) ->
   everyone = nowjs.initialize app
   everyone.now.joinRoom = (roomInfo, callback) ->
     room = getRoom roomInfo
-    room.addUser @user.clientId
 
-    if room.count > 1
-      gotSnapshot = false
-      room.now.takeSnapshot (snapshot) -> (gotSnapshot = true) && callback snapshot if not gotSnapshot
-    else callback()
+    clientId = @user.clientId
+    ready = (callback, snapshot) ->
+      room.addUser clientId
+      callback snapshot
+
+    return ready callback if room.count is 0
+    gotSnapshot = false
+    room.now.takeSnapshot (snapshot) ->
+      if not gotSnapshot
+        gotSnapshot = true
+        ready callback, snapshot
 
   getRoom = (roomInfo) ->
     room = nowjs.getGroup roomInfo.id
