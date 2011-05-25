@@ -29,11 +29,11 @@
   stopDrawing = -> lastX = lastY = 0
 
   takeSnapshot = -> canvas.toDataURL()
-  splash = (snapshot) ->
+  splash = (snapshot, callback) ->
     image = new Image()
     image.onload = ->
       context.drawImage image, 0, 0
-      lastCanvasData = context.getImageData 0, 0, width, height
+      callback()
     image.src = snapshot
 
   setColor 'rgba(20, 20, 20, 0.8)'

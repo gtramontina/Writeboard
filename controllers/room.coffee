@@ -10,7 +10,7 @@ module.exports = (app, nowjs) ->
 
     if room.count > 1
       gotSnapshot = false
-      room.now.takeSnapshot (snapshot) -> gotSnapshot = true && callback snapshot if not gotSnapshot
+      room.now.takeSnapshot (snapshot) -> (gotSnapshot = true) && callback snapshot if not gotSnapshot
     else callback()
 
   getRoom = (roomInfo) ->

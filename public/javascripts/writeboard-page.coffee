@@ -31,9 +31,11 @@ writeboardPage = ->
       dom.body.append about
       about.fadeIn()
 
-  enableCanvas = (drawings) ->
-    writeboard.splash drawings if drawings?
 
+  splashSnapshot = (snapshot) ->
+    if snapshot then writeboard.splash snapshot, enableCanvas else enableCanvas()
+
+  enableCanvas = ->
     now.startDrawing = (x, y) -> writeboard.startDrawing x, y
     now.draw = (x, y) -> writeboard.draw x, y
     now.stopDrawing = -> writeboard.stopDrawing()
@@ -58,7 +60,7 @@ writeboardPage = ->
     roomInfo =
       id: dom.room.attr 'id'
       size: width: rawCanvas.width, height: rawCanvas.height
-    now.joinRoom roomInfo, enableCanvas
+    now.joinRoom roomInfo, splashSnapshot
 
 $ ->
   page = writeboardPage()
