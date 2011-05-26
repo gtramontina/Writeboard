@@ -13,3 +13,6 @@ public/javascripts/*.js
 nodemon-ignore
 .monitor
 
+# Nodester Config
+.nodester.appconfig
+

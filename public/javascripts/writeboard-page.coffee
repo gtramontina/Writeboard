@@ -39,6 +39,7 @@ writeboardPage = ->
     now.startDrawing = (x, y) -> writeboard.startDrawing x, y
     now.draw = (x, y) -> writeboard.draw x, y
     now.stopDrawing = -> writeboard.stopDrawing()
+    now.resizeBoard = (size) -> writeboard.resize size
 
     drawing = false
     dom.canvas.mousedown (event) ->

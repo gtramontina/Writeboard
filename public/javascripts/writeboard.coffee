@@ -29,12 +29,25 @@
   stopDrawing = -> lastX = lastY = 0
 
   takeSnapshot = -> canvas.toDataURL()
+
   splash = (snapshot, callback) ->
     image = new Image()
     image.onload = ->
       context.drawImage image, 0, 0
       callback()
     image.src = snapshot
+
+  resize = (size) ->
+    lastCanvasData = context.getImageData 0, 0, width, height
+    [canvas.width, canvas.height] = [width, height] = [size.width, size.height]
+    context.putImageData lastCanvasData, 0, 0
+    ###
+    need to reset canvas/context settings... something like:
+      context.lineJoin = 'round'
+      context.lineCap = 'round'
+      context.lineWidth = 2
+    ###
+
 
   setColor 'rgba(20, 20, 20, 0.8)'
 
@@ -45,4 +58,5 @@
   setColor    : setColor
   takeSnapshot: takeSnapshot
   splash      : splash
+  resize      : resize
 
