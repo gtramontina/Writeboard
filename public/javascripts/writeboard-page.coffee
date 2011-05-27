@@ -1,4 +1,6 @@
 writeboardPage = ->
+  humane.waitForMove = false
+
   dom =
     body: $ 'body'
     canvas: $ '#writeboard'
@@ -14,9 +16,12 @@ writeboardPage = ->
     hide: -> dom.loadingBox.fadeOut()
 
   now.takeSnapshot = (callback) -> callback writeboard.takeSnapshot()
+
+  peopleWatching = false
   now.updateUserCount = (count) ->
-    dom.eye.text count
-    dom.eye.animate(opacity: 1).animate opacity: .3
+    action = if peopleWatching < count then 'joined' else 'left'
+    humane "Someone #{action} the room" if peopleWatching
+    dom.eye.text peopleWatching = count
 
   (loading 'Loading. Please wait...').show()
   rawCanvas = dom.canvas[0]
@@ -39,7 +44,9 @@ writeboardPage = ->
     now.startDrawing = (x, y) -> writeboard.startDrawing x, y
     now.draw = (x, y) -> writeboard.draw x, y
     now.stopDrawing = -> writeboard.stopDrawing()
-    now.resizeBoard = (size) -> writeboard.resize size
+    now.resizeBoard = (size) ->
+      humane 'And a bigger board is required'
+      writeboard.resize size
 
     drawing = false
     dom.canvas.mousedown (event) ->
