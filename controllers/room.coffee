@@ -11,7 +11,7 @@ module.exports = (app, nowjs) ->
     ready = (callback, snapshot) ->
       room.addUser clientId
       checkRoomSize room, roomInfo.size
-      callback snapshot
+      callback snapshot: snapshot, size: room.size
 
     return ready callback if room.count is 0
 

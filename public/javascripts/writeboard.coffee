@@ -1,12 +1,14 @@
 @createWriteboard = (canvas) ->
   context = canvas.getContext '2d'
-  context.lineJoin = 'round'
-  context.lineCap = 'round'
-  context.lineWidth = 2
-
   [width, height] = [canvas.width, canvas.height]
   lastX = lastY = 0
   lastCanvasData = undefined
+
+  colors = black: 'rgba(20, 20, 20, 0.8)'
+
+  setDefaults = ->
+    context.lineJoin = context.lineCap = 'round'
+    context.lineWidth = 2
 
   setColor = (color) -> context.strokeStyle = color
 
@@ -39,17 +41,16 @@
 
   resize = (size) ->
     lastCanvasData = context.getImageData 0, 0, width, height
+    lastColor = context.strokeStyle
+
     [canvas.width, canvas.height] = [width, height] = [size.width, size.height]
+
     context.putImageData lastCanvasData, 0, 0
-    ###
-    need to reset canvas/context settings... something like:
-      context.lineJoin = 'round'
-      context.lineCap = 'round'
-      context.lineWidth = 2
-    ###
+    setDefaults()
+    setColor lastColor
 
-
-  setColor 'rgba(20, 20, 20, 0.8)'
+  setDefaults()
+  setColor colors.black
 
   # Writeboard API
   draw        : draw
