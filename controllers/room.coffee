@@ -35,9 +35,11 @@ module.exports = (app, nowjs) ->
     room.on 'connect', updateUserCount
     room.on 'disconnect', updateUserCount
 
-    room.now.sendStartDrawing = (x, y) -> room.now.startDrawing x, y
-    room.now.sendDraw = (x, y) -> room.now.draw x, y
-    room.now.sendStopDrawing = -> room.now.stopDrawing()
+    room.now.filter = (sourceClient, func, x, y) -> @now[func] x, y if sourceClient isnt @user.clientId
+
+    room.now.sendStartDrawing = (x, y) -> room.now.filter @user.clientId, 'startDrawing', x, y
+    room.now.sendDraw = (x, y) -> room.now.filter @user.clientId, 'draw', x, y
+    room.now.sendStopDrawing = -> room.now.filter @user.clientId, 'stopDrawing'
     room.size = roomInfo.size
     room.augumented = true
     room

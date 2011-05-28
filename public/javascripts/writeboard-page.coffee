@@ -51,14 +51,18 @@ writeboardPage = ->
 
     drawing = false
     dom.canvas.mousedown (event) ->
-      return if drawing
       drawing = true
-      now.sendStartDrawing event.pageX, event.pageY
+      [x, y] = [event.pageX, event.pageY]
+      now.startDrawing x, y
+      now.sendStartDrawing x, y
     dom.canvas.mousemove (event) ->
       return if not drawing
-      now.sendDraw event.pageX, event.pageY
+      [x, y] = [event.pageX, event.pageY]
+      now.draw x, y
+      now.sendDraw x, y
     dom.canvas.mouseup ->
       drawing = false
+      now.stopDrawing()
       now.sendStopDrawing()
 
     loading().hide()
