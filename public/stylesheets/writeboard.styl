@@ -78,3 +78,43 @@ div#loading-message
     text-align center
     line-height $icon-size
 
+#markers
+  $markers = url('../images/markers.png') no-repeat
+  $black-marker = $markers 0 0
+  $blue-marker = $markers 0 -45px
+  $green-marker = $markers 0 -90px
+  $red-marker = $markers 0 -135px
+  $lid = $markers 0 -180px
+
+  marker(marker)
+    background marker
+    width 38px
+    height 45px
+    cursor initial
+
+  shut-marker(marker)
+    background $lid, marker
+    cursor pointer
+
+  fixed bottom right
+  z-index 10
+
+  div
+    float left
+  .red
+    marker($red-marker)
+  .red.shut
+    shut-marker($red-marker)
+  .green
+    marker($green-marker)
+  .green.shut
+    shut-marker($green-marker)
+  .blue
+    marker($blue-marker)
+  .blue.shut
+    shut-marker($blue-marker)
+  .black
+    marker($black-marker)
+  .black.shut
+    shut-marker($black-marker)
+

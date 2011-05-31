@@ -4,13 +4,17 @@
   lastX = lastY = 0
   lastCanvasData = undefined
 
-  colors = black: 'rgba(20, 20, 20, 0.8)'
+  colors =
+    black: 'rgba(20, 20, 20, 0.8)'
+    blue : 'rgba(0, 0, 255, 0.8)'
+    green: 'rgba(0, 150, 0, 0.8)'
+    red  : 'rgba(255, 0, 0, 0.8)'
 
   setDefaults = ->
     context.lineJoin = context.lineCap = 'round'
     context.lineWidth = 2
 
-  setColor = (color) -> context.strokeStyle = color
+  setColor = (color) -> context.strokeStyle = colors[color]
 
   startDrawing = (x, y) ->
     [lastX, lastY] = [x, y]
@@ -50,7 +54,7 @@
     setColor lastColor
 
   setDefaults()
-  setColor colors.black
+  setColor 'black'
 
   # Writeboard API
   draw        : draw

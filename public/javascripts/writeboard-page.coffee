@@ -9,6 +9,7 @@ writeboardPage = ->
     loadingBox: $ 'div#loading-message'
     loadingMessage: $ 'div#loading-message span'
     room: $ 'room'
+    markers: $('#markers').children()
 
   loading = (message) ->
     dom.loadingMessage.text message
@@ -35,6 +36,11 @@ writeboardPage = ->
       about.hide()
       dom.body.append about
       about.fadeIn()
+
+  dom.markers.click (e) ->
+    selectedMarker = ($ e.target)
+    dom.markers.each (i, marker) -> if marker is e.target then $(marker).removeClass 'shut' else $(marker).addClass 'shut'
+    writeboard.setColor(selectedMarker.attr 'data-color')
 
   closeTheDoor = (roomInfo) ->
     writeboard.resize roomInfo.size
