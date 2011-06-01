@@ -14,7 +14,8 @@
     context.lineJoin = context.lineCap = 'round'
     context.lineWidth = 2
 
-  setColor = (color) -> context.strokeStyle = colors[color]
+  setColor = (color) ->
+    context.strokeStyle = colors[color]
 
   startDrawing = (x, y) ->
     [lastX, lastY] = [x, y]
@@ -32,9 +33,11 @@
     context.stroke()
     [lastX, lastY] = [x, y]
 
-  stopDrawing = -> lastX = lastY = 0
+  stopDrawing = ->
+    lastX = lastY = 0
 
-  takeSnapshot = -> canvas.toDataURL()
+  takeSnapshot = ->
+    canvas.toDataURL()
 
   splash = (snapshot, callback) ->
     image = new Image()
@@ -46,13 +49,12 @@
   resize = (size) ->
     lastCanvasData = context.getImageData 0, 0, width, height
     lastColor = context.strokeStyle
-
     [canvas.width, canvas.height] = [width, height] = [size.width, size.height]
-
     context.putImageData lastCanvasData, 0, 0
     setDefaults()
     setColor lastColor
 
+  # Initialize
   setDefaults()
   setColor 'black'
 
