@@ -16,3 +16,5 @@ nodemon-ignore
 # Nodester Config
 .nodester.appconfig
 
+# Redcar folder
+.redcar
