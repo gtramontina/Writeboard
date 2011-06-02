@@ -10,7 +10,7 @@ WriteboardPage = ->
     loadingBox    : $ 'div#loading-message'
     loadingMessage: $ 'div#loading-message span'
     room          : $ 'room'
-    markers       : $('#markers').children()
+    markers       : $ '#markers'
 
   messages =
     loading     : 'Loading. Please wait...'
@@ -36,6 +36,12 @@ WriteboardPage = ->
     humane messages[if peopleWatching < count then 'joinedRoom' else 'leftRoom'] if peopleWatching
     dom.eye.text peopleWatching = count
 
+  now.setColor = (color) ->
+    dom.markers.children().removeClass 'selected'
+    marker = dom.markers.find "[data-color=#{color}]"
+    marker.addClass 'selected'
+    writeboard.setColor color
+
   dom.canvas.bind 'selectstart', -> false
   dom.helpButton.click ->
     $.get '/about', { noLayout: true }, (aboutPage) ->
@@ -44,13 +50,9 @@ WriteboardPage = ->
       dom.body.append about
       about.fadeIn()
 
-  dom.markers.click (e) ->
-    selectedMarker = $ e.target
-    dom.markers.each (i, marker) -> if marker is e.target then $(marker).removeClass 'shut' else $(marker).addClass 'shut'
-    writeboard.setColor(selectedMarker.attr 'data-color')
-
   closeTheDoor = (roomInfo) ->
     writeboard.resize roomInfo.size
+    now.setColor roomInfo.markerColor
     snapshot = roomInfo.snapshot
     if snapshot then writeboard.splash snapshot, enableCanvas else enableCanvas()
 
@@ -64,6 +66,11 @@ WriteboardPage = ->
     now.resizeBoard = (size) ->
       humane messages.biggerBoard
       writeboard.resize size
+
+    dom.markers.click (e) ->
+      color = $(e.target).attr 'data-color'
+      now.setColor color
+      now.sendSetColor color
 
     drawing = false
     dom.canvas.mousedown (event) ->
@@ -87,8 +94,9 @@ WriteboardPage = ->
   joinRoom: ->
     loading.show messages.joining
     roomInfo =
-      id: dom.room.attr 'id'
-      size: width: rawCanvas.width, height: rawCanvas.height
+      id          : dom.room.attr 'id'
+      markerColor : writeboard.getColor()
+      size        : width: rawCanvas.width, height: rawCanvas.height
     now.joinRoom roomInfo, closeTheDoor
 
 $ ->
