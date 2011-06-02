@@ -16,3 +16,6 @@ nodemon-ignore
 # Nodester Config
 .nodester.appconfig
 
+#redcar text editor folder
+.redcar
+
