@@ -7,6 +7,7 @@ WriteboardPage = ->
     canvas        : $ '#writeboard'
     helpButton    : $ '.help'
     eye           : $ '.eye'
+    lock          : $ '.lock'
     loadingBox    : $ 'div#loading-message'
     loadingMessage: $ 'div#loading-message span'
     room          : $ 'room'
@@ -18,6 +19,10 @@ WriteboardPage = ->
     joinedRoom  : 'Someone joined the room'
     leftRoom    : 'Someone left the room'
     biggerBoard : 'And a bigger board is required'
+    setPassword : 'Enter a password:\n\nNOTE: there is no password encryption yet, so please do not use any of your personal passwords!'
+    askPassword : 'This room is locked. Please enter the password to open it.'
+    wrongPassword: 'Wrong password.'
+    roomLocked  : 'The room has been locked'
 
   loading =
     show: (message) -> (dom.loadingMessage.text message) and dom.loadingBox.fadeIn()
@@ -36,6 +41,11 @@ WriteboardPage = ->
     humane messages[if peopleWatching < count then 'joinedRoom' else 'leftRoom'] if peopleWatching
     dom.eye.text peopleWatching = count
 
+  now.requirePassword = (callback, wrong) ->
+    alert messages.wrongPassword if wrong
+    password = prompt messages.askPassword
+    if password then callback password else window.location.replace '/'
+
   now.setColor = (color) ->
     dom.markers.children().removeClass 'selected'
     marker = dom.markers.find "[data-color=#{color}]"
@@ -49,6 +59,11 @@ WriteboardPage = ->
       about.hide()
       dom.body.append about
       about.fadeIn()
+
+  dom.lock.click ->
+    password = prompt messages.setPassword
+    now.sendLockRoom password if password
+
 
   closeTheDoor = (roomInfo) ->
     writeboard.resize roomInfo.size
@@ -66,6 +81,10 @@ WriteboardPage = ->
     now.resizeBoard = (size) ->
       humane messages.biggerBoard
       writeboard.resize size
+    now.setRoomLocked = ->
+      humane messages.roomLocked
+      dom.lock.removeClass 'lock'
+      dom.lock.addClass 'unlock'
 
     dom.markers.click (e) ->
       color = $(e.target).attr 'data-color'

@@ -6,6 +6,10 @@ module.exports = (app, nowjs) ->
   everyone = nowjs.initialize app
   everyone.now.joinRoom = (roomInfo, callback) ->
     room = getRoom roomInfo
+
+    validatePassword = (password) ->
+      if password is room.password then ready callback else @now.requirePassword validatePassword, 'wrong'
+
     clientId = @user.clientId
     ready = (callback, snapshot) ->
       room.addUser clientId
@@ -15,11 +19,12 @@ module.exports = (app, nowjs) ->
         markerColor : room.markerColor
         size        : room.size
 
-    return ready callback if room.count is 0
+    if room.password? then @now.requirePassword validatePassword else
+      return ready callback if room.count is 0
 
-    gotSnapshot = false
-    room.now.takeSnapshot (snapshot) ->
-        (gotSnapshot = true) and ready callback, snapshot if not gotSnapshot
+      gotSnapshot = false
+      room.now.takeSnapshot (snapshot) ->
+          (gotSnapshot = true) and ready callback, snapshot if not gotSnapshot
 
   checkRoomSize = (room, size) ->
     dirty = false
@@ -39,9 +44,8 @@ module.exports = (app, nowjs) ->
     room.now.sendStartDrawing = (x, y) -> room.now.filter @user.clientId, 'startDrawing', x, y
     room.now.sendDraw = (x, y) -> room.now.filter @user.clientId, 'draw', x, y
     room.now.sendStopDrawing = -> room.now.filter @user.clientId, 'stopDrawing'
-    room.now.sendSetColor = (color) ->
-      room.markerColor = color
-      room.now.filter @user.clientId, 'setColor', color
+    room.now.sendSetColor = (color) -> (room.markerColor = color) and room.now.filter @user.clientId, 'setColor', color
+    room.now.sendLockRoom = (password) -> (room.password = password) and room.now.setRoomLocked()
 
     room.size = roomInfo.size
     room.markerColor = roomInfo.markerColor
