@@ -8,7 +8,7 @@ module.exports = (app, nowjs) ->
     room = getRoom roomInfo
 
     validatePassword = (password) ->
-      if password is room.password then ready callback else @now.requirePassword validatePassword, 'wrong'
+      if password is room.password then goAhead callback else @now.requirePassword validatePassword, 'wrong'
 
     clientId = @user.clientId
     ready = (callback, snapshot) ->
@@ -19,12 +19,14 @@ module.exports = (app, nowjs) ->
         markerColor : room.markerColor
         size        : room.size
 
-    if room.password? then @now.requirePassword validatePassword else
+    goAhead = (callback) ->
       return ready callback if room.count is 0
 
       gotSnapshot = false
       room.now.takeSnapshot (snapshot) ->
           (gotSnapshot = true) and ready callback, snapshot if not gotSnapshot
+
+    if room.password? then @now.requirePassword validatePassword else goAhead callback
 
   checkRoomSize = (room, size) ->
     dirty = false
