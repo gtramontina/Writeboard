@@ -1,0 +1,51 @@
+@-webkit-keyframes moving-border {
+  0% {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 0;
+  }
+
+  50% {
+    border-top-left-radius: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 25px;
+  }
+
+  100% {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 0;
+  }
+}
+div#overlay-loading {
+  display: none;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+  text-align: center;
+}
+div#overlay-loading span {
+  -webkit-box-shadow: 0 0 14px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 0 14px rgba(0,0,0,0.5);
+  box-shadow: 0 0 14px rgba(0,0,0,0.5);
+  border: 1px solid #505050;
+  background-color: #646464;
+  color: #fff;
+  font-weight: bold;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  -webkit-animation-name: moving-border;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+

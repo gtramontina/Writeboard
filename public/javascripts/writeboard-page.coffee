@@ -24,10 +24,6 @@ WriteboardPage = ->
     wrongPassword: 'Wrong password.'
     roomLocked  : 'The room has been locked'
 
-  loading =
-    show: (message) -> (dom.loadingMessage.text message) and dom.loadingBox.fadeIn()
-    hide: -> dom.loadingBox.fadeOut()
-
   loading.show messages.loading
 
   rawCanvas = dom.canvas[0]
