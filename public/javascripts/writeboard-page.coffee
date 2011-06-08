@@ -1,5 +1,11 @@
 WriteboardPage = ->
   humane.waitForMove = false
+  loading.setShowAnimation (element) ->
+    [element.style.opacity, element.style.display] = [0, 'initial']
+    emile element, 'opacity:1'
+  loading.setHideAnimation (element) ->
+    emile element, 'opacity:0', after: -> element.style.display = 'none'
+
   peopleWatching = false
 
   dom =
