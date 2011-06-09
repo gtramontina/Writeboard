@@ -14,7 +14,7 @@
 
   setDefaults = ->
     context.lineJoin = context.lineCap = 'round'
-    context.lineWidth = 10
+    context.lineWidth = 2
 
   setColor = (color) ->
     [context.strokeStyle, currentColor] = [colors[color], color]
