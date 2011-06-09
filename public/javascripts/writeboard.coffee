@@ -1,9 +1,10 @@
 @createWriteboard = (canvas) ->
   colors =
-    black: 'rgba(20, 20, 20, 0.8)'
-    blue : 'rgba(0, 0, 255, 0.8)'
-    green: 'rgba(0, 150, 0, 0.8)'
-    red  : 'rgba(255, 0, 0, 0.8)'
+    black : 'rgba(20, 20, 20, 0.8)'
+    blue  : 'rgba(0, 0, 255, 0.8)'
+    green : 'rgba(0, 150, 0, 0.8)'
+    red   : 'rgba(255, 0, 0, 0.8)'
+    eraser: 'rgb(0, 0, 0)'
 
   context = canvas.getContext '2d'
   [width, height] = [canvas.width, canvas.height]
@@ -13,10 +14,11 @@
 
   setDefaults = ->
     context.lineJoin = context.lineCap = 'round'
-    context.lineWidth = 2
+    context.lineWidth = 10
 
   setColor = (color) ->
     [context.strokeStyle, currentColor] = [colors[color], color]
+    context.globalCompositeOperation = if color is 'eraser' then 'destination-out' else 'source-over'
 
   getColor = -> currentColor
 

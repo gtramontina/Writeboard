@@ -43,6 +43,7 @@
   z-index 10
 
   $markers = url('../images/markers.png') no-repeat
+  $eraser = url('../images/eraser_placeholder.png') no-repeat 0 0
   $black-marker = $markers 0 0
   $blue-marker = $markers 0 -45px
   $green-marker = $markers 0 -90px
@@ -77,4 +78,8 @@
     regular($black-marker)
   .black.selected
     selected($black-marker)
+  .eraser
+    regular($eraser)
+  .eraser.selected
+    selected($eraser)
 
