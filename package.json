@@ -20,7 +20,8 @@
   "devDependencies": {
     "vows"        : "*",
     "should"      : "*",
-    "jake"        : "*"
+    "jake"        : "*",
+    "soda"        : "*"
   }
 }
 
