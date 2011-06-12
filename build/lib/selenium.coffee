@@ -35,6 +35,8 @@ selenium = (callback_ready) ->
       wget = child.spawn('wget', [selenium_server_url, '-O', selenium_folder+'selenium-server.jar'])
       wget.stderr.setEncoding 'utf8'
       wget.stderr.on 'data', analyzer
+    else
+      callback_ready()
   selenium_options =
     up: up
     down: down
