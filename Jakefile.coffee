@@ -28,7 +28,7 @@ namespace 'test', ->
     require 'vows/bin/vows'
 
 task 'run', ->
-  server().up()  
+  server().up()
 
 task 'publish', ['test'], (build_number) ->
   if not build_number
