@@ -18,3 +18,9 @@ nodemon-ignore
 
 # Redcar folder
 .redcar
+
+# Temporary files
+*.swp
+
+#ignoring selenium.jar
+selenium-server.jar
