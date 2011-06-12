@@ -6,7 +6,7 @@ runner = (path, after_all_callback)->
     if files.length is 0
       after_all_callback()
     else
-      console.log "test - " + path + files
+      console.log "test - " + path + files[0]
       test = child.spawn 'node', [path+files[0]]
       test.on 'exit', () ->
         exec_all path, files[1..files.length]  
