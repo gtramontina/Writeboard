@@ -3,18 +3,21 @@ task 'default', [], -> console.log 'There is no default task. Please run a speci
 
 server = require('./build/lib/server.coffee').Server
 selenium = require('./build/lib/selenium.coffee').Selenium
+test_runner = require('./build/lib/test_runner.coffee').Runner
 
 namespace 'test', ->
-  run = ->
-	  console.log 'WORKED!!!!!'
   desc 'To run functional tests'
   task 'functional', () ->
+    shutdown = () ->
+      server_options.down()
+      selenium_options.down()
     server_options = server()
     server_options.up()
-    selenium_options = selenium(run)
+    runner = test_runner('./test/functional/', shutdown)
+    selenium_options = selenium(runner.play)
     selenium_options.up()
-    selenium_options.down()
-    server_options.down()
+    #selenium_options.down()
+    #server_options.down()
 
   desc 'To run unit tests'
   task 'unit', ->
