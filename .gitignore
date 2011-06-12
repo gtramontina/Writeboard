@@ -21,3 +21,5 @@ nodemon-ignore
 
 # Temporary files
 *.swp
+
+#ignoring selenium.jar
