@@ -16,8 +16,7 @@ namespace 'test', ->
     runner = test_runner('./test/functional/', shutdown)
     selenium_options = selenium(runner.play)
     selenium_options.up()
-    #selenium_options.down()
-    #server_options.down()
+
 
   desc 'To run unit tests'
   task 'unit', ->
