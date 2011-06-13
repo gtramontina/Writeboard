@@ -8,17 +8,19 @@ script(src='/javascripts/writeboard.js')
 script(src='/javascripts/writeboard-page.js')
 room(id=roomId)
 
-#toolbar
-  .eye(title='People Watching')
-  .lock(title='Make it private...')
-  .help(title='Help!')
+#misc
+  #eye(title='People Watching')
+  #lock(title='Make it private...')
+  #help(title='Help!')
 
-#markers
-  .eraser(title='Eraser', data-color='eraser')
-  .black(title='Black', data-color='black')
-  .blue(title='Blue', data-color='blue')
-  .red(title='Red', data-color='red')
-  .green(title='Green', data-color='green')
+#toolbar
+  #markers
+    #eraser(title='Eraser', data-color='eraser')
+    #black(title='Black', data-color='black')
+    #blue(title='Blue', data-color='blue')
+    #red(title='Red', data-color='red')
+    #green(title='Green', data-color='green')
+  #snapshot(title='Take Snapshot!')
 
 canvas#writeboard
 

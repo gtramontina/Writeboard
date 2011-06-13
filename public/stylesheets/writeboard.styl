@@ -5,7 +5,7 @@
   absolute top left
   cursor crosshair
 
-#toolbar
+#misc
   background-color rgba(0, 0, 0, 0.05)
   border-bottom-left-radius 10px
   fixed top right
@@ -26,60 +26,66 @@
     background url('../images/icons.png') no-repeat
     margin 1px
     float left
-  .help
+  #help
     sprite 0, -32px
-  .lock
+  #lock
     sprite 0, -16px
-  .unlock
+  #unlock
     sprite 0, 0
-  .eye
+  #eye
     sprite 0, -48px
     padding-left $icon-size
     text-align center
     line-height $icon-size
 
-#markers
+#toolbar
+  div
+    float left
   fixed bottom right
   z-index 10
 
-  $markers = url('../images/markers.png') no-repeat
-  $eraser = url('../images/eraser_placeholder.png') no-repeat 0 0
-  $black-marker = $markers 0 0
-  $blue-marker = $markers 0 -45px
-  $green-marker = $markers 0 -90px
-  $red-marker = $markers 0 -135px
-  $lid = $markers 0 -180px
-
-  regular(marker)
-    background $lid, marker
-    width 38px
+  #snapshot
+    background url('../images/snapshot_placeholder.png') no-repeat 0 0
     height 45px
+    width 45px
     cursor pointer
 
-  selected(marker)
-    background marker
-    cursor initial
+  #markers
+    $markers = url('../images/markers.png') no-repeat
+    $eraser = url('../images/eraser_placeholder.png') no-repeat 0 0
+    $black-marker = $markers 0 0
+    $blue-marker = $markers 0 -45px
+    $green-marker = $markers 0 -90px
+    $red-marker = $markers 0 -135px
+    $lid = $markers 0 -180px
+    regular(marker)
+      background $lid, marker
+      width 38px
+      height 45px
+      cursor pointer
 
-  div
-    float left
-  .red
-    regular($red-marker)
-  .red.selected
-    selected($red-marker)
-  .green
-    regular($green-marker)
-  .green.selected
-    selected($green-marker)
-  .blue
-    regular($blue-marker)
-  .blue.selected
-    selected($blue-marker)
-  .black
-    regular($black-marker)
-  .black.selected
-    selected($black-marker)
-  .eraser
-    regular($eraser)
-  .eraser.selected
-    selected($eraser)
+    selected(marker)
+      background marker
+      cursor initial
+
+    #red
+      regular($red-marker)
+    #red.selected
+      selected($red-marker)
+    #green
+      regular($green-marker)
+    #green.selected
+      selected($green-marker)
+    #blue
+      regular($blue-marker)
+    #blue.selected
+      selected($blue-marker)
+    #black
+      regular($black-marker)
+    #black.selected
+      selected($black-marker)
+    #eraser
+      regular($eraser)
+    #eraser.selected
+      selected($eraser)
 

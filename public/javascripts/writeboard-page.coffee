@@ -11,13 +11,12 @@ WriteboardPage = ->
   dom =
     body          : $ 'body'
     canvas        : $ '#writeboard'
-    helpButton    : $ '.help'
-    eye           : $ '.eye'
-    lock          : $ '.lock'
-    loadingBox    : $ 'div#loading-message'
-    loadingMessage: $ 'div#loading-message span'
+    helpButton    : $ '#misc #help'
+    eye           : $ '#misc #eye'
+    lock          : $ '#misc #lock'
     room          : $ 'room'
-    markers       : $ '#markers'
+    markers       : $ '#toolbar #markers'
+    snapshot      : $ '#toolbar #snapshot'
 
   messages =
     loading     : 'Loading. Please wait...'
@@ -92,6 +91,9 @@ WriteboardPage = ->
       color = $(e.target).attr 'data-color'
       now.setColor color
       now.sendSetColor color
+
+    dom.snapshot.click ->
+      now.takeSnapshot (image) -> window.open image, '_blank'
 
     drawing = false
     dom.canvas.mousedown (event) ->
