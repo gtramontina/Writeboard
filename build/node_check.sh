@@ -12,8 +12,9 @@ clone_node_from_github() {
 }
 install_node() {
     mkdir $NODE_INSTALL_DIR
+    PREFIX=$PWD/$NODE_INSTALL_DIR
     pushd $NODE_SOURCE_DIR
-    ./configure --prefix=$PWD/$NODE_INSTALL_DIR
+    ./configure --prefix=$PREFIX
     make install
     popd
 }
