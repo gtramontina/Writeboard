@@ -1,5 +1,4 @@
 module.exports = (express, stylus, nib, nowjs) ->
-  express.createServer();
   app = express.createServer();
 
   stylusCompiler = (str, path) ->
