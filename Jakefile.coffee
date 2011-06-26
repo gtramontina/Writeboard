@@ -13,7 +13,7 @@ namespace 'test', ->
       selenium_options.down()
     server_options = server()
     server_options.up()
-    runner = test_runner('./test/functional/', shutdown)
+    runner = test_runner('./spec/functional/', shutdown)
     selenium_options = selenium(runner.play)
     selenium_options.up()
 

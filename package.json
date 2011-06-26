@@ -18,7 +18,7 @@
   },
 
   "devDependencies": {
-    "vows"        : "*",
+    "jessie"      : "*",
     "should"      : "*",
     "jake"        : "*",
     "soda"        : "*"
