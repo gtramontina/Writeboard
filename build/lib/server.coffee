@@ -1,15 +1,15 @@
 child = require 'child_process'
 
-server = ->
-  node = ''
+module.exports = ->
+  node = undefined
   up = ->
     node = child.spawn 'node', ['app.js']
     console.log 'Running Node JS server'
   down = ->
     console.log 'Shutting down'
     node.kill 'SIGHUP'
-  server_options =
-    up: up
-    down: down
 
-exports.Server = server
+  # API
+  up: up
+  down: down
+

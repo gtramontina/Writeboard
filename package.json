@@ -1,27 +1,32 @@
 {
-  "name"           : "Writeboard!",
-  "description"    : "Collaborative Whiteboard",
-  "version"        : "0.0.1",
-  "homepage"       : "writeboard.it",
-  "repository"     : { "type": "git", "url": "github.com/gtramontina/writeboard.it.git" },
-  "author"         : "Guilherme J. Tramontina <guilherme.tramontina@gmail.com> (about.me/gtramontina)",
-  "scripts"        : { "test": "vows test/* --spec" },
-  "engines"        : { "node": "*" },
-
-  "dependencies"   : {
-    "coffee-script": ">=1.1.1",
-    "express"      : ">=2.3.7",
-    "now"          : ">=0.6.0",
-    "jade"         : ">=0.11.0",
-    "stylus"       : ">=0.13.0",
-    "nib"          : ">=0.0.7"
+  "name"            : "Writeboard!",
+  "description"     : "Collaborative Whiteboard",
+  "version"         : "0.0.1",
+  "homepage"        : "writeboard.me",
+  "author"          : "Guilherme J. Tramontina <guilherme.tramontina@gmail.com> (about.me/gtramontina)",
+  "repository"      : {
+    "type"          : "git",
+    "url"           : "github.com/gtramontina/writeboard.it.git"
   },
-
-  "devDependencies": {
-    "jessie"      : "*",
-    "should"      : "*",
-    "jake"        : "*",
-    "soda"        : "*"
+  "scripts"         : {
+    "test"          : "jessie spec/unit/",
+    "start"         : "node app.js"
+  },
+  "engines"         : {
+    "node"          : ">=0.4.8"
+  },
+  "dependencies"    : {
+    "coffee-script" : ">=1.1.1",
+    "express"       : ">=2.3.7",
+    "now"           : ">=0.6.0",
+    "jade"          : ">=0.11.0",
+    "stylus"        : ">=0.13.0",
+    "nib"           : ">=0.0.7"
+  },
+  "devDependencies" : {
+    "jessie"        : ">=0.3.7",
+    "jake"          : ">=0.1.12",
+    "soda"          : ">=0.2.4"
   }
 }
 
