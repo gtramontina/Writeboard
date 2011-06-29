@@ -6,8 +6,8 @@ build/test_results/*
 node_modules/
 
 # Compiled css and js (from and stylus and coffeescript)
-public/stylesheets/*.css
-public/javascripts/*.js
+lib/public/stylesheets/*.css
+lib/public/javascripts/*.js
 
 # Node.js monitor module
 nodemon-ignore
@@ -24,3 +24,4 @@ nodemon-ignore
 
 #ignoring selenium.jar
 selenium-server.jar
+
