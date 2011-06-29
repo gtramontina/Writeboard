@@ -1,9 +1,14 @@
+require.paths.unshift('./lib');
 require('coffee-script');
 
-require('./server')(
+require('server')(
     require('express'),
     require('stylus'),
     require('nib'),
-    require('now')
+    require('now'),
+
+    // Injected Controllers
+    require('controllers/writeboard'),
+    require('controllers/room')
 );
 
