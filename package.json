@@ -1,5 +1,5 @@
 {
-  "name"            : "Writeboard!",
+  "name"            : "Writeboard",
   "description"     : "Collaborative Whiteboard",
   "version"         : "0.0.1",
   "homepage"        : "writeboard.me",
@@ -9,8 +9,8 @@
     "url"           : "github.com/gtramontina/writeboard.it.git"
   },
   "scripts"         : {
-    "test"          : "jessie spec/unit/",
-    "start"         : "node app.js"
+    "test"          : "jake test:unit",
+    "start"         : "jake run"
   },
   "engines"         : {
     "node"          : ">=0.4.8"
