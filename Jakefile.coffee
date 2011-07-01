@@ -1,4 +1,4 @@
-JESSIE_PATH      = './node_modules/jessie/bin'
+JESSIE_PATH = './node_modules/jessie/bin'
 
 helper = require './build/lib/buildHelper'
 sys = require 'sys'
@@ -26,6 +26,7 @@ namespace 'test', ->
   task 'unit', (xmlFileName) ->
     helper.execute "#{JESSIE_PATH}/jessie spec/unit"
 
+  # XUnit ----------------------------------------------------------------------
   desc 'To run unit tests and send the results to'
   task 'xunit', (xmlFileName) ->
     if not xmlFileName

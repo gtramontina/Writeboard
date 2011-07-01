@@ -1,7 +1,3 @@
-# Build artifacts and test results
-build/published_artifacts/*
-build/test_results/*
-
 # Node.js Modules
 node_modules/
 
@@ -21,7 +17,4 @@ nodemon-ignore
 
 # Temporary files
 *.swp
-
-#ignoring selenium.jar
-selenium-server.jar
 

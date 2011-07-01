@@ -1,0 +1,4 @@
+# Place all artifacts to be published in this directory
+*
+!.gitignore
+
