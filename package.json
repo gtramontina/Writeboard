@@ -14,7 +14,7 @@
     "start"         : "jake run"
   },
   "engines"         : {
-    "node"          : ">=0.5.0"
+    "node"          : "v0.4.8"
   },
   "dependencies"    : {
     "coffee-script" : ">=1.1.1"
