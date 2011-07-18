@@ -1,0 +1,20 @@
+{
+  "author": "Guilherme J. Tramontina <guilherme.tramontina@gmail.com> (about.me/gtramontina)",
+  "name": "Writeboard",
+  "description": "A Whiteboard for distributed teams",
+  "version": "0.1.0",
+  "homepage": "github.com/gtramontina/Writeboard",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gtramontina/Writeboard.git"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "jessie specs/unit"
+  },
+  "engines": {
+    "node": ">=v0.5.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
