@@ -11,16 +11,18 @@
   "main"            : "app.js",
   "scripts"         : {
     "test"          : "jake test:unit",
-    "start"         : "jake run"
+    "start"         : "nodemon --debug"
   },
   "engines"         : {
     "node"          : "v0.4.8"
   },
   "dependencies"    : {
-    "coffee-script" : ">=1.1.1"
+    "coffee-script" : ">=1.1.1",
+    "express"       : ">=2.3.7"
   },
   "devDependencies" : {
     "jessie"        : ">=0.3.7",
-    "jake"          : ">=0.1.12"
+    "jake"          : ">=0.1.12",
+    "nodemon"       : ">=0.5.3"
   }
 }
