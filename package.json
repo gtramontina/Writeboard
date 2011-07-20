@@ -18,7 +18,8 @@
   },
   "dependencies"    : {
     "coffee-script" : ">=1.1.1",
-    "express"       : ">=2.3.7"
+    "express"       : ">=2.3.7",
+    "stylus"        : ">=0.13.0"
   },
   "devDependencies" : {
     "jessie"        : ">=0.3.7",

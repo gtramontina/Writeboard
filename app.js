@@ -1,5 +1,6 @@
 require('coffee-script');
 
 webApp = require('./lib/server')(
-	require('express')
+  require('express'),
+  require('stylus')
 );
