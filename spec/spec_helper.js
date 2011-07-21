@@ -1,30 +1,23 @@
 require('coffee-script');
 require('jessie').sugar();
 
-// More sugar
-any      = jasmine.any
+// More sugar ==================================================================
+any      = jasmine.any;
+match    = function(regexp) { return new Match(regexp) };
 stubWith = jasmine.createSpyObj;
 n00p     = function() {/* No Op */};
 _        = {};
 
-var customMatchers = {
-  to_have_attributes: function(expectedAttributes) {
-    if (!this.actual) return false;
-
-    for (expectedAttribute in expectedAttributes) {
-      if (!expectedAttributes.hasOwnProperty(expectedAttribute)) continue;
-      if (!this.actual[expectedAttribute]) return false;
-
-      expectedValue = expectedAttributes[expectedAttribute];
-      actualValue = this.actual[expectedAttribute];
-      if (expectedValue instanceof RegExp) {
-         if (!expectedValue.test(actualValue)) return false;
-      } else {
-        if (!this.env.equals_(actualValue, expectedValue)) return false;
-      }
-    }
-    return true;
+// Equality testers ============================================================
+var Match = function(regexp) { this.regexp = regexp };
+var equalityTesters = [
+  /* RegEx */
+  function(a, b) {
+    if (b instanceof Match) return b.regexp.test(a);
   }
-};
+];
 
-beforeEach(function(){ this.addMatchers(customMatchers); });
+// -----------------------------------------------------------------------------
+beforeEach(function(){
+  for (var i=0; i<equalityTesters.length; i++) { this.env.addEqualityTester(equalityTesters[i]); }
+});

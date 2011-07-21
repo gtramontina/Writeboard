@@ -17,7 +17,7 @@ describe 'Writeboard Server', ->
 
     app = require(SERVER) expressDouble, stylusDouble
 
-  # Test Suite =================================================================
+  # Suite =================================================================
 
   it 'should export an express server', ->
     expect(app).toEqual webAppDouble
@@ -26,19 +26,21 @@ describe 'Writeboard Server', ->
     webAppDouble.listen.should_have_been_called_with 9796
 
   it 'should set a views directory', ->
-      webAppDouble.set.should_have_been_called_with 'views', any String
-      webAppDouble.set.mostRecentCall.args[1].should_match /\/views$/
+    webAppDouble.set.should_have_been_called_with 'views', match /\/views$/
+  
+  it 'should set a view engine', ->
+    webAppDouble.set.should_have_been_called_with 'view engine', 'jade'
 
   describe 'when being configured (the order matters)', ->
 
     it 'should use the stylus middleware', ->
       expressDouble.createServer.mostRecentCall.args[0].should_be 'stylus middleware'
-      expect(stylusDouble.middleware.mostRecentCall.args[0]).to_have_attributes src: /\/public$/, compile: any Function
+      stylusDouble.middleware.should_have_been_called_with src: match(/\/public$/), compile: any Function
 
     it 'should use the express compiler middleware to enable coffeescript', ->
       expressDouble.createServer.mostRecentCall.args[1].should_be 'express compiler'
-      expect(expressDouble.compiler.mostRecentCall.args[0]).to_have_attributes src: /\/public$/, enable: ['coffeescript']
+      expressDouble.compiler.should_have_been_called_with enable: ['coffeescript'], src: match /\/public$/
 
     it 'should use the express static middleware to serve static content', ->
       expressDouble.createServer.mostRecentCall.args[2].should_be 'express static'
-      expressDouble.static.mostRecentCall.args[0].should_match /\/public$/
+      expressDouble.static.should_have_been_called_with match /\/public$/

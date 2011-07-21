@@ -8,4 +8,4 @@ describe 'Index controller', ->
     require(INDEX) webAppDouble
 
     webAppDouble.get.should_have_been_called_with '/', any Function
-    fakeResponse.redirect.mostRecentCall.args[0].should_match /^\/\d{13}$/
+    fakeResponse.redirect.should_have_been_called_with match /^\/\d{13}$/

@@ -11,5 +11,6 @@ module.exports = (express, stylus, nib) ->
   )
 
   app.set 'views', "#{__dirname}/views"
+  app.set 'view engine', 'jade'
   app.listen 9796
   return app

@@ -1,0 +1,137 @@
+#writeboard {
+  background-image: url("../images/grid.gif");
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: crosshair;
+}
+#misc {
+  background-color: rgba(0,0,0,0.05);
+  border-bottom-left-radius: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 4px;
+  z-index: 10;
+}
+#misc div {
+  background: url("../images/icons.png") no-repeat;
+  margin: 1px;
+  float: left;
+}
+#misc #help {
+  background-position: 0 -32px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+}
+#misc #help:hover {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  cursor: pointer;
+}
+#misc #lock {
+  background-position: 0 -16px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+}
+#misc #lock:hover {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  cursor: pointer;
+}
+#misc #unlock {
+  background-position: 0 0;
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+}
+#misc #unlock:hover {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  cursor: pointer;
+}
+#misc #eye {
+  background-position: 0 -48px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  padding-left: 16px;
+  text-align: center;
+  line-height: 16px;
+}
+#misc #eye:hover {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  cursor: pointer;
+}
+#toolbar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+#toolbar div {
+  float: left;
+}
+#toolbar #snapshot {
+  background: url("../images/snapshot_placeholder.png") no-repeat 0 0;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+#toolbar #markers #red {
+  background: url("../images/markers.png") no-repeat 0 -180px, url("../images/markers.png") no-repeat 0 -135px;
+  width: 38px;
+  height: 45px;
+  cursor: pointer;
+}
+#toolbar #markers #red.selected {
+  background: url("../images/markers.png") no-repeat 0 -135px;
+  cursor: initial;
+}
+#toolbar #markers #green {
+  background: url("../images/markers.png") no-repeat 0 -180px, url("../images/markers.png") no-repeat 0 -90px;
+  width: 38px;
+  height: 45px;
+  cursor: pointer;
+}
+#toolbar #markers #green.selected {
+  background: url("../images/markers.png") no-repeat 0 -90px;
+  cursor: initial;
+}
+#toolbar #markers #blue {
+  background: url("../images/markers.png") no-repeat 0 -180px, url("../images/markers.png") no-repeat 0 -45px;
+  width: 38px;
+  height: 45px;
+  cursor: pointer;
+}
+#toolbar #markers #blue.selected {
+  background: url("../images/markers.png") no-repeat 0 -45px;
+  cursor: initial;
+}
+#toolbar #markers #black {
+  background: url("../images/markers.png") no-repeat 0 -180px, url("../images/markers.png") no-repeat 0 0;
+  width: 38px;
+  height: 45px;
+  cursor: pointer;
+}
+#toolbar #markers #black.selected {
+  background: url("../images/markers.png") no-repeat 0 0;
+  cursor: initial;
+}
+#toolbar #markers #eraser {
+  background: url("../images/markers.png") no-repeat 0 -180px, url("../images/eraser_placeholder.png") no-repeat 0 0;
+  width: 38px;
+  height: 45px;
+  cursor: pointer;
+}
+#toolbar #markers #eraser.selected {
+  background: url("../images/eraser_placeholder.png") no-repeat 0 0;
+  cursor: initial;
+}

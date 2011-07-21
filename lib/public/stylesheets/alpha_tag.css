@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Droid Sans Mono";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Droid Sans Mono"), local("DroidSansMono"), url("http://themes.googleusercontent.com/font?kit=ns-m2xQYezAtqh7ai59hJUYuTAAIFFn5GTWtryCmBQ4") format("woff");
+}
+#alpha_tag {
+  z-index: 10;
+  font-size: 10px;
+  position: fixed;
+  top: 2.5em;
+  left: -3.75em;
+  background-color: #fa0;
+  padding: 1px 0;
+  overflow: hidden;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+#alpha_tag span {
+  font-family: "Droid Sans Mono";
+  color: #a66f00;
+  border: 1px solid #ffbf40;
+  display: block;
+  margin: 0.05em 0;
+  padding: 0.5em 3.5em;
+  text-align: center;
+  text-decoration: none;
+}
