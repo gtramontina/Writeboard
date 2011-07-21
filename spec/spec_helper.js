@@ -5,6 +5,7 @@ require('jessie').sugar();
 any      = jasmine.any
 stubWith = jasmine.createSpyObj;
 n00p     = function() {/* No Op */};
+_        = {};
 
 var customMatchers = {
   to_have_attributes: function(expectedAttributes) {

@@ -41,4 +41,4 @@ describe 'Writeboard Server', ->
 
     it 'should use the express static middleware to serve static content', ->
       expressDouble.createServer.mostRecentCall.args[2].should_be 'express static'
-      expect(expressDouble.static.mostRecentCall.args[0]).to_have_attributes src: /\/public$/
+      expressDouble.static.mostRecentCall.args[0].should_match /\/public$/
