@@ -10,5 +10,4 @@ source $NVM_DIR/nvm.sh
 npm install
 
 # 3) RUN TESTS
-$WORKSPACE/node_modules/jake -f xunit spec/unit | cat > $BUILD_DIR/test_results/$BUILD_NUMBER.xml
-
+$WORKSPACE/node_modules/jessie/bin/jessie -f xunit spec/unit/ | cat > $BUILD_DIR/test_results/$BUILD_NUMBER.xml
