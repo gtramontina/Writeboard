@@ -1,6 +1,6 @@
 source $BUILD_DIR/bin/nodeready.sh
 
-LOGFILE=".environment_setup.log"
+LOGFILE="$LOGS_DIR/environment_setup.log"
 echo "# $(date)" > $LOGFILE
 
 say() { echo "# [environment setup] $*" | tee -a $LOGFILE; }

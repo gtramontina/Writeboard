@@ -3,7 +3,7 @@
 # for more information.
 
 # MESSAGING primitives
-LOGFILE=".nodeready.log"
+LOGFILE="$LOGS_DIR/nodeready.log"
 echo "# $(date)" > $LOGFILE
 
 say() { echo "# [nodeready] $*" | tee -a $LOGFILE; }
