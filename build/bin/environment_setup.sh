@@ -1,4 +1,4 @@
-source ./nodeready.sh
+source $BUILD_DIR/lib/nodeready.sh
 
 LOG="# [environment setup]"
 if [ $NODE_VERSION ]
