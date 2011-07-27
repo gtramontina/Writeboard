@@ -3,7 +3,8 @@ module.exports = (app, nowjs) ->
   app.get '/:roomId', (req, res) ->
     res.render 'writeboard', { title: 'Writeboard!', roomId: req.params.roomId }
 
-  everyone = nowjs.initialize app
+  everyone = nowjs.initialize app, socketio: 'log level': 2
+
   everyone.now.joinRoom = (roomInfo, callback) ->
     room = getRoom roomInfo
 
@@ -39,11 +40,11 @@ module.exports = (app, nowjs) ->
     room = nowjs.getGroup roomInfo.id
     return room if room.augumented
 
-    updateUserCount = -> room.count (numberOfPeople) -> 
-      console.log '---------------->'+numberOfPeople
-      room.now.updateUserCount numberOfPeople
+    updateUserCount = -> room.count (numberOfPeople) -> room.now.updateUserCount numberOfPeople
     room.on 'join', updateUserCount
-    room.on 'left', updateUserCount
+    room.on 'connect', updateUserCount
+    room.on 'disconnect', updateUserCount
+    room.on 'leave', updateUserCount
 
     room.now.filter = (sourceClient, func, params...) -> @now[func] params... if sourceClient isnt @user.clientId
     room.now.sendStartDrawing = (x, y) -> room.now.filter @user.clientId, 'startDrawing', x, y
