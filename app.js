@@ -8,5 +8,6 @@ webApp = require('server')(
   require('nib'    )
 );
 
-// .. and initialize controllers.
-require('controllers')(webApp)
+// ... and initialize controllers.
+require('controllers/index') webApp
+require('controllers/room') webApp
