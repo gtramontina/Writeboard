@@ -20,11 +20,12 @@ module.exports = (app, nowjs) ->
         size        : room.size
 
     goAhead = (callback) ->
-      return ready callback if room.count is 0
+      room.count (numberOfPeople) ->
+        return ready callback if numberOfPeople is 0
 
-      gotSnapshot = false
-      room.now.takeSnapshot (snapshot) ->
-          (gotSnapshot = true) and ready callback, snapshot if not gotSnapshot
+        gotSnapshot = false
+        room.now.takeSnapshot (snapshot) ->
+            (gotSnapshot = true) and ready callback, snapshot if not gotSnapshot
 
     if room.password? then @now.requirePassword validatePassword else goAhead callback
 
@@ -38,9 +39,11 @@ module.exports = (app, nowjs) ->
     room = nowjs.getGroup roomInfo.id
     return room if room.augumented
 
-    updateUserCount = -> room.now.updateUserCount room.count
-    room.on 'connect', updateUserCount
-    room.on 'disconnect', updateUserCount
+    updateUserCount = -> room.count (numberOfPeople) -> 
+      console.log '---------------->'+numberOfPeople
+      room.now.updateUserCount numberOfPeople
+    room.on 'join', updateUserCount
+    room.on 'left', updateUserCount
 
     room.now.filter = (sourceClient, func, params...) -> @now[func] params... if sourceClient isnt @user.clientId
     room.now.sendStartDrawing = (x, y) -> room.now.filter @user.clientId, 'startDrawing', x, y
