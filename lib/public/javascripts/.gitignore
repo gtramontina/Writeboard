@@ -1,0 +1,3 @@
+# As coffee-script is being used, ignore all .js files in this directory
+*.js
+!.gitignore
