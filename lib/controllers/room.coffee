@@ -1,2 +1,2 @@
 module.exports = (app) ->
-  app.get '/:roomId', (request, response) -> response.render 'room', roomId: request.params.roomId
+  app.get '/:roomNumber', (request, response) -> response.render 'room', roomNumber: request.params.roomNumber

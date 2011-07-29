@@ -1,4 +1,4 @@
-INDEX = '../../../lib/controllers'
+INDEX = '../../../lib/controllers/index'
 
 describe 'Index controller', ->
   it 'should redirect to a new room', ->

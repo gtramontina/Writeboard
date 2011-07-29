@@ -1,13 +1,17 @@
 require.paths.unshift(__dirname+'/lib');
 require('coffee-script');
 
-// Setup the web app...
 webApp = require('server')(
   require('express'),
   require('stylus' ),
   require('nib'    )
 );
 
-// ... and initialize controllers.
-require('controllers/index') webApp
-require('controllers/room') webApp
+nowJs = require('now');
+
+require('controllers/index')(webApp)
+require('controllers/room')(webApp)
+require('controllers/conference_center')(
+  nowJs.initialize(webApp).now,
+  require('doorman')(nowJs)
+);

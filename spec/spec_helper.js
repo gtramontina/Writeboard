@@ -4,6 +4,7 @@ require('jessie').sugar();
 // More sugar ==================================================================
 any      = jasmine.any;
 match    = function(regexp) { return new Match(regexp) };
+stub     = jasmine.createSpy;
 stubWith = jasmine.createSpyObj;
 n00p     = function() {/* No Op */};
 _        = {};
