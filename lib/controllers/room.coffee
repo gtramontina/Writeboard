@@ -1,6 +1,6 @@
 module.exports = (app, nowjs) ->
 
-  app.get '/:roomId', (req, res) ->
+  app.get '/alpha/:roomId', (req, res) ->
     res.render 'writeboard', { title: 'Writeboard!', roomId: req.params.roomId }
 
   everyone = nowjs.initialize app, socketio: 'log level': 2

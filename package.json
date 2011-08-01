@@ -21,7 +21,8 @@
     "now"           : ">=0.7.0",
     "jade"          : ">=0.11.0",
     "stylus"        : ">=0.13.0",
-    "nib"           : ">=0.0.7"
+    "nib"           : ">=0.0.7",
+    "couch-client"  : ">=0.0.4"
   },
   "devDependencies" : {
     "jessie"        : ">=0.3.7",
