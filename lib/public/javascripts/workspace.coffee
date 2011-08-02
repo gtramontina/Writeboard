@@ -1,0 +1,2 @@
+root = exports ? @
+root.Workspace = ($) ->

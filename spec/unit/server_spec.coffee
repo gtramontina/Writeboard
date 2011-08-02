@@ -23,7 +23,7 @@ describe 'Writeboard Server', ->
     expect(app).toEqual webAppDouble
 
   it 'should listen on a port', ->
-    webAppDouble.listen.should_have_been_called_with 9796
+    webAppDouble.listen.should_have_been_called_with 8080
 
   it 'should set a views directory', ->
     webAppDouble.set.should_have_been_called_with 'views', match /\/views$/

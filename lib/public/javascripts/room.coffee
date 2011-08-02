@@ -1,0 +1,2 @@
+$dom.onready ->
+  Attendee now

@@ -1,6 +1,6 @@
-ATTENDEE = '../../../lib/public/javascripts/attendee'
+ATTENDEE = '../../../lib/public/javascripts/attendee.coffee'
 
-describe 'Attendant', ->
+describe 'Attendee', ->
   
   attendee = n00p
   roomDouble = n00p
@@ -13,10 +13,10 @@ describe 'Attendant', ->
     roomDouble = stubWith 'room', ['join', 'ready']
     roomDouble.join.andCallFake (workspace, callback) -> hereYouGoCallback = callback
     roomDouble.ready.andCallFake (callback) -> roomReadyCallback = callback
-    workspaceDouble = stubWith 'workspace', ['setup']
-    workspaceDouble.info = 'My local initial setup'
-    
-    attendee = require(ATTENDEE) roomDouble, workspaceDouble
+    workspaceDouble = stubWith 'workspace', ['setup', 'info']
+    workspaceDouble.info.andCallFake -> 'My local initial setup'
+
+    attendee = require(ATTENDEE).Attendee roomDouble, workspaceDouble
   
   describe 'when at the door', ->
     it 'should request access to a room', ->
