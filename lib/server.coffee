@@ -12,8 +12,8 @@ module.exports = (express, stylus, nib, nowjs, controllers...) ->
     app.use express.bodyParser()
     app.use express.methodOverride()
     app.use app.router
-    app.use stylus.middleware src: "#{__dirname}/public", compile: stylusCompiler
-    app.use express.compiler src: "#{__dirname}/public", enable: ['coffeescript']
+    app.use stylus.middleware src: "./public", compile: stylusCompiler
+    app.use express.compiler src: "./public", enable: ['coffeescript']
     app.use express.static "#{__dirname}/public"
 
   controllers.forEach (controller) -> controller app, nowjs
