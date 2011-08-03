@@ -27,6 +27,7 @@
   "devDependencies" : {
     "jessie"        : ">=0.3.7",
     "jake"          : ">=0.1.12",
+    "jsdom"         : ">=0.2.1",
     "nodemon"       : ">=0.5.3"
   }
 }
