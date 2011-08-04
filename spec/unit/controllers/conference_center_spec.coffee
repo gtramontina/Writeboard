@@ -7,7 +7,7 @@ describe 'Conference Center controller', ->
   doorman = n00p
 
   beforeEach ->
-    foundation  = _
+    foundation  = user: clientId: '00-12'
     doorman = stubWith 'doorman', ['leadPersonToRoom']
     conferenceCenter = require(CONFERENCE_CENTER) foundation, doorman
 
@@ -15,7 +15,7 @@ describe 'Conference Center controller', ->
     expect(conferenceCenter).toBe foundation
 
   it 'should allow people to join conference rooms', ->
-    cb_hereYouGo = stub 'hereYouGo-callback'
-    conferenceCenter.join {room: '13', personalInfo: id: '00-123'}, cb_hereYouGo
-    doorman.leadPersonToRoom.should_have_been_called_with id: '00-123', '13'
-    cb_hereYouGo.should_have_been_called()
+    hereYouGo = stub 'hereYouGo-callback'
+    conferenceCenter.join {roomNumber: '13'}, hereYouGo
+    doorman.leadPersonToRoom.should_have_been_called_with '00-12', '13'
+    hereYouGo.should_have_been_called()

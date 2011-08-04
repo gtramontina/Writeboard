@@ -1,7 +1,7 @@
 module.exports = (foundation, doorman) ->
 
-  foundation.join = ({room: room, personalInfo: personalInfo}, cb_hereYouGo) ->
-    doorman.leadPersonToRoom personalInfo, room
-    cb_hereYouGo()
+  foundation.join = (workspaceInfo, hereYouGo) ->
+    doorman.leadPersonToRoom @user.clientId, workspaceInfo.roomNumber
+    hereYouGo()
 
   return foundation

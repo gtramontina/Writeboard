@@ -1,2 +1,2 @@
 $dom.onready ->
-  Attendee now
+  Attendee now, Workspace window, $dom

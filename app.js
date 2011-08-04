@@ -3,11 +3,11 @@ require('coffee-script');
 
 webApp = require('server')(
   require('express'),
-  require('stylus' ),
-  require('nib'    )
+  require('stylus'),
+  require('nib')
 );
 
-nowJs = require('now');
+var nowJs = require('now');
 
 require('controllers/index')(webApp)
 require('controllers/room')(webApp)
