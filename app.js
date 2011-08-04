@@ -12,6 +12,6 @@ var nowJs = require('now');
 require('controllers/index')(webApp)
 require('controllers/room')(webApp)
 require('controllers/conference_center')(
-  nowJs.initialize(webApp).now,
+  nowJs.initialize(webApp, {socketio: {'log level': 2}}).now,
   require('doorman')(nowJs)
 );
