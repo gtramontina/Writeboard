@@ -1,4 +1,12 @@
 module.exports = (foundation) ->
-  leadPersonToRoom: (person, roomNumber) ->
-    room = foundation.getGroup roomNumber
+  
+  leadPersonToRoom = (person, workspaceInfo) ->
+    room = foundation.getGroup workspaceInfo.roomNumber
     room.addUser person
+  
+  giveMeRoomInfo = (roomNumber) ->
+    foundation.getGroup(roomNumber).info
+
+  # API
+  leadPersonToRoom  : leadPersonToRoom
+  giveMeRoomInfo    : giveMeRoomInfo

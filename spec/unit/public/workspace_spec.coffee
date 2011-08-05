@@ -7,7 +7,7 @@ specs = (window) ->
     
     it 'should initialize its information based on the DOM', ->
       info = workspace.info()
-      info.roomNumber.should_be '13'
+      info.roomNumber.should_be 'fake room number'
       info.canvas.width.should_be 1024
       info.canvas.height.should_be 768
     
@@ -27,7 +27,7 @@ jsDom = require 'jsdom'
 domUtilitySource = fileSystem.readFileSync(DOLLARDOM).toString()
 
 jsDom.env
-  html: '<room id="13"/>'
+  html: '<room id="fake room number"/>'
   src: domUtilitySource
   done: (error, window) ->
     [window.innerWidth, window.innerHeight] = [1024, 768]
